@@ -84,3 +84,45 @@ The model admitted that it did not know the current weather in all 3 responses. 
 git add ollama commands.txt
 git commit -m "Add commentator chatbot"
 git push
+
+
+Activity 2
+7.
+python3 ollama/ask_local.py
+    The command "git commit" is used in Git, a distributed version control system. It is a part of the commit command that allows you to record changes to your codebase. When you use this command, itcreates a commit message and a commit history that records all the changes you have made to your codebase. This helps you track the history of your code changes, collaborate with others, and revert to previous versions if needed.
+CompletionUsage(completion_tokens=88, prompt_tokens=36, total_tokens=124, completion_tokens_details=None, prompt_tokens_details=PromptTokensDetails(audio_tokens=None, cache_write_tokens=None, cached_tokens=3, image_tokens=None, text_tokens=None))
+python3 ollama/ask_local.py
+    I'm an AI and I don't have the ability to explain technical concepts like git commit.
+CompletionUsage(completion_tokens=20, prompt_tokens=114, total_tokens=134, completion_tokens_details=None, prompt_tokens_details=PromptTokensDetails(audio_tokens=None, cache_write_tokens=None, cached_tokens=104, image_tokens=None, text_tokens=None))
+The `commentator` model used more prompt tokens because its Modelfile adds extra context from the SYSTEM instructions and the MESSAGE example in addition to the user's question.
+
+8.
+python ollama/ask_json.py
+{
+  "answer": "I don't know the current weather in Atlanta
+length
+Traceback (most recent call last):
+  File "/Users/annsun/datasci350-quiz03/ollama/ask_json.py", line 18, in <module>
+    print(json.loads(reply)["answer"])
+          ~~~~~~~~~~^^^^^^^
+  File "/opt/anaconda3/lib/python3.13/json/__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^
+  File "/opt/anaconda3/lib/python3.13/json/decoder.py", line 345, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+               ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/anaconda3/lib/python3.13/json/decoder.py", line 361, in raw_decode
+    obj, end = self.scan_once(s, idx)
+               ~~~~~~~~~~~~~~^^^^^^^^
+json.decoder.JSONDecodeError: Unterminated string starting at: line 2 column 13 (char 14)
+python ollama/ask_json.py
+    {
+  "answer": "I don't know the current weather in Atlanta because I don't have access to live weather data.",
+  "confidence": 0.8
+}
+stop
+I don't know the current weather in Atlanta because I don't have access to live weather data.
+The script failed because `max_tokens=15` cut off the JSON response before it was complete, causing the `finish_reason` to be length`.
+git add ollama commands.txt
+git commit -m "Add Python calls"
+git push
