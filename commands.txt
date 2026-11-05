@@ -122,7 +122,47 @@ python ollama/ask_json.py
 }
 stop
 I don't know the current weather in Atlanta because I don't have access to live weather data.
-The script failed because `max_tokens=15` cut off the JSON response before it was complete, causing the `finish_reason` to be length`.
+The script failed because `max_tokens=15` cut off the JSON response before it was complete, causing the `finish_reason` to be `length`.
 git add ollama commands.txt
 git commit -m "Add Python calls"
+git push
+
+
+Activity 3
+9.
+Launched an EC2 instance.
+
+10.
+chmod 400 ~/datasci350.pem
+ssh -i ~/datasci350.pem ubuntu@ec2-3-135-19-40.us-east-2.compute.amazonaws.com
+    ubuntu@ip-172-31-24-93:~$
+
+11.
+sudo apt update
+sudo apt install -y python3-pandas python3-matplotlib python3-seaborn
+
+12.
+cd ~/datasci350-quiz03
+scp -i /Users/annsun/datasci350.pem aws/traffic_analysis.py ubuntu@ec2-3-135-19-40.us-east-2.compute.amazonaws.com:~/
+scp -i /Users/annsun/datasci350.pem aws/website_traffic.txt ubuntu@ec2-3-135-19-40.us-east-2.compute.amazonaws.com:~/
+
+13.
+python3 traffic_analysis.py > results.txt
+cat /var/lib/cloud/data/instance-id >> results.txt
+sha256sum results.txt > fingerprint.txt
+ls
+
+14.
+scp -i /Users/annsun/datasci350.pem ubuntu@ec2-3-135-19-40.us-east-2.compute.amazonaws.com:~/results.txt aws/
+scp -i /Users/annsun/datasci350.pem ubuntu@ec2-3-135-19-40.us-east-2.compute.amazonaws.com:~/fingerprint.txt aws/
+scp -i /Users/annsun/datasci350.pem ubuntu@ec2-3-135-19-40.us-east-2.compute.amazonaws.com:~/traffic_analysis.png aws/
+ls aws
+
+15.
+If an EC2 instance is stopped, I still pay for attached EBS storage.
+I used ChatGPT to check my work and make sure I followed the instructions correctly on tasks 1–15.
+Example prompt: “is this Modelfile correct for Task 1.5?”
+No AI agent ran commands for me; I ran all commands myself.
+git add .
+git commit -m "Add AWS analysis results"
 git push
