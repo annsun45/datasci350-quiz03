@@ -160,8 +160,7 @@ ls aws
 
 15.
 If an EC2 instance is stopped, I still pay for attached EBS storage.
-I used ChatGPT to check my work and make sure I followed the instructions correctly on tasks 1–15.
-Example prompt: “is this Modelfile correct for Task 1.5?”
+I used ChatGPT on questions 1-15 mainly to check my work, troubleshoot errors, and review my answers. It also helped with some command syntax, the Modelfile setup, and the `max_tokens` fix in Task 8.
 No AI agent ran commands for me; I ran all commands myself.
 git add .
 git commit -m "Add AWS analysis results"
